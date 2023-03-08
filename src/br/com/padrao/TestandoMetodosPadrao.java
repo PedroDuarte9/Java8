@@ -3,6 +3,7 @@ package br.com.padrao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TestandoMetodosPadrao {
 
@@ -17,6 +18,7 @@ public class TestandoMetodosPadrao {
 		//Aqui estamos listando pela ordem lexicográfica(Ordem Alfabética)
 		Collections.sort(list);
 		System.out.println(list);
+		System.out.println("");
 		
 		//Aqui estamos listando pelo tamanho da string
 		ClasseParaComparacao cpc = new ClasseParaComparacao();
@@ -24,7 +26,20 @@ public class TestandoMetodosPadrao {
 		list.forEach(comparador -> {
 			System.out.println(comparador);
 		});
+		//Usando um default methods
+		System.out.println(" ");
+		Consumer<String> consumidor = new ImprimeNaLinha();
+		list.forEach(consumidor);
 		
 	}
 
+}
+
+class ImprimeNaLinha implements Consumer<String> {
+
+	@Override
+	public void accept(String s) {
+		System.out.println(s);
+		
+	}
 }
