@@ -2,6 +2,7 @@ package br.com.padrao;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -26,20 +27,31 @@ public class TestandoMetodosPadrao {
 		list.forEach(comparador -> {
 			System.out.println(comparador);
 		});
-		//Usando um default methods
+		//A classe Imprime na linha não é mais necessária.
 		System.out.println(" ");
-		Consumer<String> consumidor = new ImprimeNaLinha();
-		list.forEach(consumidor);
+		
+		
+		//Excluindo a classe Imprime na linha e lendo tudo numa lambda
+		list.forEach(s -> System.out.println(s));
+		
+		
+		//Diminuindo com as lambdas
+		list.sort((String s1, String s2) -> {
+			if(s1.length() < s2.length()) {
+				return -1;
+			}
+			if(s1.length() > s2.length()) {
+				return 1;
+			}
+			return 0;
+		});
+		//Listando também pelo tamanho da String
+		System.out.println(list);
+		
+		//Diminuindo ainda mais o Lambda usando um método compare da classe Integer
+		list.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
 		
 	}
 
 }
 
-class ImprimeNaLinha implements Consumer<String> {
-
-	@Override
-	public void accept(String s) {
-		System.out.println(s);
-		
-	}
-}
