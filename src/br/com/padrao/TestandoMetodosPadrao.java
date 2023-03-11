@@ -51,7 +51,10 @@ public class TestandoMetodosPadrao {
 		//Diminuindo ainda mais o Lambda usando um método compare da classe Integer
 		list.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
 		
+		//Assunto complementar
+		new Thread(() ->  System.out.println("Executando um Runnable")).start();
+
+		
 	}
 
 }
-
